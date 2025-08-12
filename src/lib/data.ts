@@ -20,8 +20,8 @@ const tracks: Track[] = [
     { 
         id: '1', 
         title: 'Waalian', 
-        artist: 'Harpinder Singh', 
-        coverUrl: '/covers/IMG_3172.jpg', 
+        artist: 'Harpinder Singh',
+        coverUrl: '/covers/Image_1.jpg', 
         audioUrl: '/audio/Waalian.mp3',
         releaseDate: Timestamp.fromDate(new Date('2025-08-20')),
         featured: true, 
