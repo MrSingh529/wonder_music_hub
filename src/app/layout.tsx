@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { PlayerProvider } from '@/lib/player-context';
 import { PlayerWrapper } from '@/components/player/PlayerWrapper';
 import { Inter, Lexend } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend' });

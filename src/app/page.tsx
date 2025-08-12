@@ -3,6 +3,7 @@ import { getPublishedTracks } from '@/lib/data';
 import type { ClientTrack } from '@/lib/types';
 import { Header } from '@/components/layout/Header';
 import { HomePage } from '@/components/player/HomePage';
+import { Analytics } from "@vercel/analytics/next";
 
 async function getTracks(): Promise<ClientTrack[]> {
   const tracks = await getPublishedTracks();
