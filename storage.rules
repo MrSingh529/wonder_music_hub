@@ -1,0 +1,32 @@
+
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+  
+    function isAuthAdmin() {
+      return request.auth.uid in ['6f9SEnmvyTgw1fuOMCfDF5LineG3'];
+    }
+  
+    // Allow public read access to audio and cover files
+    match /audio/{trackId} {
+      allow read: if true;
+      allow write: if isAuthAdmin();
+    }
+    
+    match /covers/{trackId} {
+      allow read: if true;
+      allow write: if isAuthAdmin();
+    }
+
+    match /upcoming_covers/{upcomingId} {
+      allow read: if true;
+      allow write: if isAuthAdmin();
+    }
+
+    // Deny all other access by default
+    match /{allPaths=**} {
+      allow read, write: if isAuthAdmin();
+    }
+  }
+}

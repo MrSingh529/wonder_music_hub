@@ -1,0 +1,27 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    function isAuthAdmin() {
+      return request.auth.uid in ['6f9SEnmvyTgw1fuOMCfDF5LineG3'];
+    }
+
+    // Public read for published tracks and upcoming releases
+    match /tracks/{trackId} {
+      allow read: if resource.data.published == true;
+      allow write: if isAuthAdmin();
+    }
+    
+    match /upcoming/{upcomingId} {
+      allow read: if true;
+      allow write: if isAuthAdmin();
+    }
+    
+    // Default deny for all other collections unless you are admin
+    match /{document=**} {
+      allow read, write: if isAuthAdmin();
+    }
+  }
+}
